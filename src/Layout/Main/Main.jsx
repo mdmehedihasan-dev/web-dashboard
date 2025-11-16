@@ -1,11 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useNavigate, Link, Outlet } from "react-router-dom";
+import { useNavigate, Link, Outlet, useLocation } from "react-router-dom";
 import LOGO from "/logo.svg";
 import SMALLLOGO from "../../assets/smalllogo.png";
 import { FaUserLock } from "react-icons/fa";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
-// import NotificationDropdown from "../Components/NotificationsDropdown";
+
 import {
   FileText,
   Plus,
@@ -15,22 +15,32 @@ import {
   Package,
   Map,
   Menu as MenuIcon,
-  LayoutDashboard,
 } from "lucide-react";
+
 import NotificationDropdown from "../../Components/dashboardComponents/NotificationDropdown";
 
 const MainLayout = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const sidebarRef = useRef(null);
-  const [isOpen, setIsOpen] = useState(false);
 
-  // ✅ Get and store current role
+  const [isOpen, setIsOpen] = useState(false);
   const [role, setRole] = useState(localStorage.getItem("role") || "user");
 
-  const urlPath = window.location.pathname;
-  const lastSegment = urlPath.split("/").filter(Boolean).pop();
+  const currentPath = location.pathname;
 
-  // ✅ Close sidebar when clicking outside
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    localStorage.removeItem("username");
+    navigate("/sign-in");
+  };
+
+  const handleAddNewRequest = () => {
+    navigate("/request/form/step/1");
+  };
+
+  // Close sidebar when clicking outside
   const handleClickOutside = (event) => {
     if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
       setIsOpen(false);
@@ -43,18 +53,21 @@ const MainLayout = () => {
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
     }
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
 
-  // ✅ Listen for localStorage role changes
+  // Listen for role changes
   useEffect(() => {
     const handleStorageChange = () => {
       setRole(localStorage.getItem("role") || "user");
     };
+
     window.addEventListener("storage", handleStorageChange);
-    handleStorageChange(); // run once on mount
+    handleStorageChange();
+
     return () => {
       window.removeEventListener("storage", handleStorageChange);
     };
@@ -67,165 +80,140 @@ const MainLayout = () => {
     year: "numeric",
   });
 
-  // ✅ Logout handler
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
-    localStorage.removeItem("username");
-    navigate("/signIn");
-  };
-
-  // ✅ Add new request handler
-  const handleAddNewRequest = () => {
-    navigate("/request/form/step/1");
-  };
+  // Active class helper
+  const activeClass = (path) =>
+    currentPath.includes(path)
+      ? "bg-primary text-white"
+      : "bg-white text-black";
 
   return (
     <div className="flex items-start justify-between gap-0">
-      {/* LEFT NAVBAR */}
+      {/* LEFT SIDEBAR */}
       <div
         ref={sidebarRef}
-        className={`md:h-screen h-screen overflow-auto fixed left-0 bg-white w-[280px] md:w-[280px] z-50 px-4 md:px-6 py-7 rounded-r-lg flex flex-col justify-between transition-transform duration-1000 ${
+        className={`md:h-screen h-screen overflow-auto fixed left-0 bg-white w-[280px] md:w-[280px] z-50 px-4 md:px-6 py-7 rounded-r-lg flex flex-col justify-between transition-transform duration-700 ${
           isOpen
             ? "-translate-x-0 md:translate-x-full z-20"
             : "-translate-x-[290px] z-10 md:translate-x-0"
         }`}
       >
-        <div className="flex flex-col items-center justify-center w-full ">
+        <div className="flex flex-col items-center justify-center w-full">
+          {/* LOGO */}
           <Link
-            to={"/home"}
+            to="/home"
             className="border-b border-b-[#EBEBEB] pb-6 mb-8 w-full flex justify-center"
           >
-            <img src={LOGO} alt="Logo" className="h-14 " />
+            <img src={LOGO} alt="Logo" className="h-14" />
           </Link>
 
-          {/* Sidebar Links */}
+          {/* SIDEBAR MENUS */}
           <div className="flex flex-col items-center w-full gap-3 nav_link">
-            {/* ✅ Only show My Requests & Add New Request for normal users */}
+            {/* USER ROUTES */}
             {role === "user" && (
               <>
                 <Link
                   to="my-requests"
-                  className={`flex gap-4 items-center p-4 px-6 bg-white w-full rounded-full hover:bg-[var(--primary-color)] hover:text-white ${
-                    lastSegment === "my-requests" ? "active_menu" : ""
-                  }`}
+                  className={`flex gap-4 items-center p-4 px-6 w-full rounded-full hover:bg-primary hover:text-white ${activeClass(
+                    "my-requests"
+                  )}`}
                 >
-                  <span>
-                    <FileText size={22} color="black" />
-                  </span>
+                  <FileText size={22} />
                   <span>My Requests</span>
                 </Link>
 
                 <div
                   onClick={handleAddNewRequest}
-                  className={`flex gap-4 items-center cursor-pointer p-4 px-6 bg-white w-full rounded-full hover:bg-[var(--primary-color)] hover:text-white ${
-                    lastSegment === "new-request" ? "active_menu" : ""
-                  }`}
+                  className={`flex gap-4 items-center cursor-pointer p-4 px-6 w-full rounded-full hover:bg-primary hover:text-white ${activeClass(
+                    "new-request"
+                  )}`}
                 >
-                  <span>
-                    <Plus size={19} color="#010101" />
-                  </span>
+                  <Plus size={19} />
                   <span>Add New Request</span>
                 </div>
               </>
             )}
 
-            {/* ✅ Courier-only routes */}
+            {/* COURIER ROUTES */}
             {role === "courier" && (
               <>
                 <Link
                   to="jobs"
-                  className={`flex gap-4 items-center p-4 px-6 bg-white w-full rounded-full hover:bg-[var(--primary-color)] hover:text-white ${
-                    lastSegment === "jobs" ? "active_menu" : ""
-                  }`}
+                  className={`flex gap-4 items-center p-4 px-6 w-full rounded-full hover:bg-primary hover:text-white ${activeClass(
+                    "jobs"
+                  )}`}
                 >
-                  <span>
-                    <Search size={20} color="black" />
-                  </span>
+                  <Search size={20} />
                   <span>New Jobs</span>
                 </Link>
 
                 <Link
                   to="my-shipments"
-                  className={`flex gap-4 items-center p-4 px-6 bg-white w-full rounded-full hover:bg-[var(--primary-color)] hover:text-white ${
-                    lastSegment === "my-shipments" ? "active_menu" : ""
-                  }`}
+                  className={`flex gap-4 items-center p-4 px-6 w-full rounded-full hover:bg-primary hover:text-white ${activeClass(
+                    "my-shipments"
+                  )}`}
                 >
-                  <span>
-                    <Package size={22} color="#010101" />
-                  </span>
+                  <Package size={22} />
                   <span>My Shipments</span>
                 </Link>
 
                 <Link
                   to="daily-routes"
-                  className={`flex gap-4 items-center p-4 px-6 bg-white w-full rounded-full hover:bg-[var(--primary-color)] hover:text-white ${
-                    lastSegment === "daily-routes" ? "active_menu" : ""
-                  }`}
+                  className={`flex gap-4 items-center p-4 px-6 w-full rounded-full hover:bg-primary hover:text-white ${activeClass(
+                    "daily-routes"
+                  )}`}
                 >
-                  <span>
-                    <Map size={22} color="#010101" />
-                  </span>
+                  <Map size={22} />
                   <span>Daily Routes</span>
                 </Link>
               </>
             )}
 
-            {/* Chat */}
+            {/* COMMON ROUTES */}
             <Link
               to="chat"
-              className={`flex gap-4 items-center p-4 px-6 bg-white w-full rounded-full hover:bg-[var(--primary-color)] hover:text-white ${
-                lastSegment === "chat" ? "active_menu" : ""
-              }`}
+              className={`flex gap-4 items-center p-4 px-6 w-full rounded-full hover:bg-primary hover:text-white ${activeClass(
+                "chat"
+              )}`}
             >
-              <span>
-                <MessageSquare size={21} color="#010101" />
-              </span>
+              <MessageSquare size={21} />
               <span>Chat</span>
             </Link>
 
-            {/* Customer Support */}
             <Link
               to="customer-support"
-              className={`flex gap-4 items-center p-4 px-6 bg-white w-full rounded-full hover:bg-[var(--primary-color)] hover:text-white ${
-                lastSegment === "customer-support" ? "active_menu" : ""
-              }`}
+              className={`flex gap-4 items-center p-4 px-6 w-full rounded-full hover:bg-primary hover:text-white ${activeClass(
+                "customer-support"
+              )}`}
             >
-              <span>
-                <Headphones size={22} color="#010101" />
-              </span>
+              <Headphones size={22} />
               <span>Customer Support</span>
             </Link>
 
-            {/* More */}
             <Link
               to="more"
-              className={`flex gap-4 items-center p-4 px-6 bg-white w-full rounded-full hover:bg-[var(--primary-color)] hover:text-white ${
-                lastSegment === "more" ? "active_menu" : ""
-              }`}
+              className={`flex gap-4 items-center p-4 px-6 w-full rounded-full hover:bg-primary hover:text-white ${activeClass(
+                "more"
+              )}`}
             >
-              <span>
-                <MenuIcon size={20} color="#010101" />
-              </span>
+              <MenuIcon size={20} />
               <span>More</span>
             </Link>
           </div>
         </div>
 
-        {/* Bottom section */}
+        {/* BOTTOM PROFILE + LOGOUT */}
         <div className="flex flex-col items-center w-full gap-4 nav_link">
           <div className="border-b border-t border-t-[#EBEBEB] pt-4 border-b-[#EBEBEB] pb-4 w-full">
             <Link
               to="update-profile"
-              className={`flex gap-4 items-center p-4 px-6 bg-[var(--primary-color)] text-white w-full rounded-full hover:bg-[var(--primary-color)] hover:text-white`}
+              className="flex items-center w-full gap-4 p-4 px-6 text-white rounded-full bg-primary hover:bg-primary"
             >
-              <span>
-                <img
-                  src={SMALLLOGO}
-                  className="w-[32px] h-[32px] rounded-full object-cover"
-                />
-              </span>
-              <span className="max-w-xs overflow-hidden uppercase truncate text-ellipsis whitespace-nowrap">
+              <img
+                src={SMALLLOGO}
+                className="w-[32px] h-[32px] rounded-full object-cover"
+              />
+
+              <span className="max-w-xs uppercase truncate">
                 {localStorage.getItem("username") || "User Name"}
               </span>
             </Link>
@@ -233,28 +221,30 @@ const MainLayout = () => {
 
           <div
             onClick={handleLogout}
-            className={`flex gap-4 items-center p-4 px-6 bg-red-500 text-white w-full rounded-full uppercase hover:bg-red-300 hover:cursor-pointer`}
+            className="flex items-center w-full gap-4 p-4 px-6 text-white uppercase bg-red-500 rounded-full cursor-pointer hover:bg-red-300"
           >
-            <span>
-              <FaUserLock size={20} />
-            </span>
+            <FaUserLock size={20} />
             <span>Logout</span>
           </div>
         </div>
       </div>
 
       {/* MAIN CONTENT */}
-      <div className="border-0 w-[95%] md:w-[79%] border-red-800 mx-auto mt-4 mb-[50px] md:ml-[300px]">
+      <div className="border-0 w-[95%] md:w-[79%] mx-auto mt-4 mb-10 md:ml-[300px]">
         <div className="flex items-center justify-between header_top">
-          <h1 className="font-bold text-[17px] truncate md:truncate-none capitalize">
+          <h1 className="font-bold text-[17px] capitalize truncate">
             Welcome {localStorage.getItem("username") || "User"} (
             {role === "courier" ? "Courier" : "User"})
           </h1>
+
           <div className="flex items-center gap-3">
-            <NotificationDropdown/>
-            <div className="hidden p-2 px-4 text-xs bg-white rounded-full shadow-sm cursor-pointer md:block">
+            <NotificationDropdown />
+
+            <div className="hidden p-2 px-4 text-xs bg-white rounded-full shadow-sm md:block">
               {formattedDate}
             </div>
+
+            {/* Mobile Menu Icon */}
             <div className="block md:hidden">
               {isOpen ? (
                 <IoClose size={30} onClick={() => setIsOpen(false)} />
@@ -264,6 +254,8 @@ const MainLayout = () => {
             </div>
           </div>
         </div>
+
+        {/* Page Content */}
         <div className="mt-6">
           <Outlet />
         </div>
