@@ -84,14 +84,14 @@ const ModalPopup = ({
             <input
               type={showPassword ? "text" : "password"}
               name={field}
-              className="form-control border p-2 rounded-md w-full"
+              className="w-full p-2 border rounded-md form-control"
               placeholder={`Enter ${field}`}
               value={form[field]}
               onChange={handleInput}
             />
 
             <div
-              className="cursor-pointer mt-1"
+              className="mt-1 cursor-pointer"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? (
@@ -105,7 +105,7 @@ const ModalPopup = ({
 
         <div className="flex justify-between mt-4">
           <button
-            className="bg-red-400 px-6 py-2 text-white rounded-full"
+            className="px-6 py-2 text-white bg-red-400 rounded-full"
             onClick={() => {
               setShowModal(false);
               if (close) close();
@@ -114,7 +114,7 @@ const ModalPopup = ({
             Close
           </button>
           <button
-            className="bg-green-500 px-6 py-2 text-white rounded-full"
+            className="px-6 py-2 text-white bg-green-500 rounded-full"
             onClick={submitPassword}
           >
             Submit
@@ -149,7 +149,7 @@ const ModalPopup = ({
     return (
       <div>
         <textarea
-          className="border p-3 w-full mb-3 rounded-md"
+          className="w-full p-3 mb-3 border rounded-md"
           rows={4}
           value={comment}
           onChange={(e) => setComment(e.target.value)}
@@ -173,7 +173,7 @@ const ModalPopup = ({
 
         <div className="flex justify-between mt-6">
           <button
-            className="bg-red-400 px-6 py-2 text-white rounded-full"
+            className="px-6 py-2 text-white bg-red-400 rounded-full"
             onClick={() => {
               setShowModal(false);
               if (close) close();
@@ -182,7 +182,7 @@ const ModalPopup = ({
             Close
           </button>
           <button
-            className="bg-lime-600 px-6 py-2 text-white rounded-full"
+            className="px-6 py-2 text-white rounded-full bg-lime-600"
             onClick={submitReview}
           >
             Submit
@@ -196,9 +196,9 @@ const ModalPopup = ({
     <>
       {showmodal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-[999]">
-          <div className="flex justify-center items-center h-full w-full">
+          <div className="flex items-center justify-center w-full h-full">
             <div className="bg-white rounded-md w-[90%] md:w-[40%]">
-              <div className="font-semibold text-lg p-4 border-b flex justify-between">
+              <div className="flex justify-between p-4 text-lg font-semibold border-b">
                 <span>{heading}</span>
 
                 {!show_buttons_not && (
@@ -223,7 +223,7 @@ const ModalPopup = ({
                 {content === "additems" && <AddItems close={close} />}
                 {content === "review_content" && <ReviewPopup />}
                 {content === "delete_popup" && (
-                  <p className="text-red-500 text-center">
+                  <p className="text-center text-red-500">
                     Are you sure you want to delete job #{job?.jobNumber}?
                   </p>
                 )}
@@ -232,9 +232,9 @@ const ModalPopup = ({
               {show_buttons_not &&
                 content !== "ChangePassword" &&
                 content !== "review_content" && (
-                  <div className="border-t p-4 flex justify-between">
+                  <div className="flex justify-between p-4 border-t">
                     <button
-                      className="bg-red-400 text-white px-4 py-2 rounded-full"
+                      className="px-4 py-2 text-white bg-red-400 rounded-full"
                       onClick={() => {
                         setShowModal(false);
                         if (close) close();
@@ -243,7 +243,7 @@ const ModalPopup = ({
                       Close
                     </button>
                     <button
-                      className="bg-green-500 text-white px-6 py-2 rounded-full"
+                      className="px-6 py-2 text-white bg-green-500 rounded-full"
                       onClick={handleSubmit}
                     >
                       {content === "delete_popup" ? "Delete" : "Submit"}

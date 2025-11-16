@@ -84,44 +84,44 @@ const Dashboard = () => {
     <div>
       <>
         <h1 className="font-bold text-[17px] w-full my-5">User Dashboard</h1>
-        <div className="white_box w-full px-4 py-4 flex justify-between items-center mt-5">
-          <div className="flex gap-5 items-center">
+        <div className="flex items-center justify-between w-full px-4 py-4 mt-5 white_box">
+          <div className="flex items-center gap-5">
             <List size={20} color="#85E211" />
             <div className="uppercase text-[17px] font-bold">Total Jobs Posted</div>
           </div>
-          <div className="font-bold text-4xl mr-3">50</div>
+          <div className="mr-3 text-4xl font-bold">50</div>
         </div>
       </>
 
       <>
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <h1 className="font-bold text-[17px] w-full my-5">Courier Dashboard</h1>
         </div>
 
-        <div className="flex justify-between items-stretch gap-4 mt-4 md:flex-row flex-col">
+        <div className="flex flex-col items-stretch justify-between gap-4 mt-4 md:flex-row">
           <div className="flex justify-between items-start flex-col gap-3 w-full md:w-[18%]">
-            <div className="white_box w-full px-4 py-4 flex justify-between items-start flex-col">
-              <div className="flex gap-3 items-center">
+            <div className="flex flex-col items-start justify-between w-full px-4 py-4 white_box">
+              <div className="flex items-center gap-3">
                 <Truck size={18} color="#85E211" />
                 <div className="text-[12px] font-normal">Active Shipments</div>
               </div>
-              <div className="font-semibold text-xl mt-4">10</div>
+              <div className="mt-4 text-xl font-semibold">10</div>
             </div>
 
-            <div className="white_box w-full px-4 py-4 flex justify-between items-start flex-col">
-              <div className="flex gap-3 items-center">
+            <div className="flex flex-col items-start justify-between w-full px-4 py-4 white_box">
+              <div className="flex items-center gap-3">
                 <CheckCircle size={18} color="#85E211" />
                 <div className="text-[12px] font-normal">Success Deliveries</div>
               </div>
-              <div className="font-semibold text-xl mt-4">8</div>
+              <div className="mt-4 text-xl font-semibold">8</div>
             </div>
 
-            <div className="white_box w-full px-4 py-4 flex justify-between items-start flex-col">
-              <div className="flex gap-3 items-center">
+            <div className="flex flex-col items-start justify-between w-full px-4 py-4 white_box">
+              <div className="flex items-center gap-3">
                 <DollarSign size={18} color="#85E211" />
                 <div className="text-[12px] font-normal">Revenue</div>
               </div>
-              <div className="font-semibold text-xl mt-4">$200</div>
+              <div className="mt-4 text-xl font-semibold">$200</div>
             </div>
           </div>
 
@@ -129,7 +129,6 @@ const Dashboard = () => {
             <LineChart/>
           </div>
         </div>
-
         <ModalPopup
           open={modalOpen}
           close={() => setModalOpen(false)}

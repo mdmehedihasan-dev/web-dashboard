@@ -10,15 +10,21 @@ import CourierSignup from "../pages/auth/CourierSignUp";
 import SignUp from "../pages/auth/SignUp";
 import SignIn from "../pages/auth/SignIn";
 import CourierSignIn from "../pages/auth/CourierSignIn";
+import Step1 from "../pages/request/Step1";
+import Step2 from "../pages/request/Step2";
+import Step3 from "../pages/request/Step3";
+import Step4 from "../pages/request/Step4";
+import Step5 from "../pages/request/Step5";
+import Step6 from "../pages/request/Step6";
 
 export const router = createBrowserRouter([
-    {
+  {
     path: "/home",
-    element: <Home/>,
+    element: <Home />,
   },
   {
     path: "/sign-in",
-    element: <SignIn/>,
+    element: <SignIn />,
   },
   // {
   //   path: "/forgate-password",
@@ -28,19 +34,24 @@ export const router = createBrowserRouter([
   //   path: "/verify-code",
   //   element: <VerifyCode />,
   // },
-    {
+  {
     path: "/sign-up",
-    element: <SignUp/>,
+    element: <SignUp />,
   },
-
-    {
+  {
     path: "/courier-signin",
-    element: <CourierSignIn/>,
+    element: <CourierSignIn />,
   },
   {
     path: "/courier-signup",
-    element: <CourierSignup/>,
+    element: <CourierSignup />,
   },
+  { path: "/request/form/step/1", element: <Step1 /> },
+  { path: "/request/form/step/2", element: <Step2 /> },
+  { path: "/request/form/step/3", element: <Step3 /> },
+  { path: "/request/form/step/4", element: <Step4 /> },
+  { path: "/request/form/step/5", element: <Step5 /> },
+   { path: "/request/form/step/6", element: <Step6/> },
   {
     element: <PrivateRoute />,
     children: [
@@ -50,20 +61,21 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "/dashboard",
-            element: <Dashboard/>,
+            element: <Dashboard />,
           },
-         {
+          {
             path: "/chat",
-            element: <Chat/>,
+            element: <Chat />,
           },
-           {
+          {
             path: "/customer-support",
-            element: <CustomerSupport/>,
+            element: <CustomerSupport />,
           },
-               {
+          {
             path: "/more",
-            element: <More/>,
+            element: <More />,
           },
+          { path: "/request/form/step/1", element: <Step1 /> },
         ],
       },
     ],
