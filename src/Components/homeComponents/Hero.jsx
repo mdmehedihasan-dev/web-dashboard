@@ -1,8 +1,8 @@
 import ANIMATION from "/animation.gif";
 const Hero = () => {
   return (
-    <div className="container mx-auto px-5 md:px-0">
-      <div className="grid grid-col-1 md:grid-cols-2 my-5 gap-10 items-center">
+    <div className="container px-5 mx-auto md:px-0">
+      <div className="grid items-center gap-10 my-5 grid-col-1 md:grid-cols-2">
         <div
           className="uppercase"
           aosType="zoom-in"
@@ -14,11 +14,11 @@ const Hero = () => {
             data-aos="fade-right"
           >
             jouw lading,{" "}
-            <span className="text-[var(--primary-color)]">onze netwerk -</span>
+            <span className="text-primary">onze netwerk -</span>
           </h1>
-          <div className="flex items-center md:justify-start justify-center gap-2 md:flex-row flex-col md:mt-0 mt-4">
+          <div className="flex flex-col items-center justify-center gap-2 mt-4 md:justify-start md:flex-row md:mt-0">
             <h1
-              className="md:text-[40px] text-[26px] font-bold text-[var(--primary-color)]"
+              className="md:text-[40px] text-[26px] font-bold text-primary"
               data-aos="fade-left"
             >
               <span className="text-black">samen naar de</span> juiste

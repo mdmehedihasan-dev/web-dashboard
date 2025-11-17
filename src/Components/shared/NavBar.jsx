@@ -46,7 +46,7 @@ export default function Navbar() {
               className="z-10 h-12 mt-4 cursor-pointer w-18 md:h-18 md:mt-0"
             />
           </Link>
-          <img src="/logo_bg.svg" className="absolute z-0 logo_bg" />
+          <img src="/logo_bg.svg" className="absolute top-0 left-0 z-0 logo_bg" />
         </div>
 
         {/* Mobile menu toggle */}

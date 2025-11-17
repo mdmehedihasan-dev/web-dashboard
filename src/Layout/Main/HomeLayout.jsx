@@ -6,8 +6,8 @@ import Footer from "../../Components/shared/Footer";
 const HomeLayout = () => {
   return (
     <div className="overflow-x-hidden bg-white">
-      <div>
       <Navbar />
+      <div>
         <Outlet />
       </div>
       <Footer />

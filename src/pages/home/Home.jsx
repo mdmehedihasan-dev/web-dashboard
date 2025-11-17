@@ -30,7 +30,6 @@ const Home = () =>{
     <div className="">
       <AosWrapper>
         <div>
-          
           <Hero/>
           <FormFilter/>
           <BookNow/>
@@ -46,7 +45,7 @@ const Home = () =>{
         <div>
           <button
             onClick={handleClick}
-            className="px-6 py-4 rounded-xl bg-[var(--primary-color)] hover:bg-[var(--text-color)] font-bold text-black text-[16px]  flex items-center justify-between gap-3 fixed bottom-3 z-[9] left-1/2 -translate-x-1/2 hover:text-white"
+            className="px-6 py-4 rounded-xl bg-primary hover:bg-primary font-bold text-black text-[16px]  flex items-center justify-between gap-3 fixed bottom-3 z-[9] left-1/2 -translate-x-1/2 hover:text-white"
           >
             Bekijk de prijs en boek transport
           </button>
