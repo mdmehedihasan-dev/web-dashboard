@@ -68,17 +68,17 @@ const DashboardUser = () => {
       <RequestsData />
 
       {/* --------------------- COURIER DASHBOARD --------------------- */}
-      <div className="flex items-center justify-between">
+      {/* <div className="flex items-center justify-between">
         <h1 className="font-bold text-[17px] w-full my-5">
           Courier Dashboard
         </h1>
-      </div>
+      </div> */}
 
       {/* Courier Stats */}
-      <div className="flex flex-col items-stretch justify-between gap-4 mt-4 md:flex-row">
+      {/* <div className="flex flex-col items-stretch justify-between gap-4 mt-4 md:flex-row">
         <div className="flex justify-between items-start flex-col gap-3 w-full md:w-[18%]">
 
-          {/* Active Shipments */}
+          
           <div className="flex flex-col items-start justify-between w-full px-4 py-4 white_box">
             <div className="flex items-center gap-3">
               <Truck size={18} color="#85E211" />
@@ -91,7 +91,6 @@ const DashboardUser = () => {
             </div>
           </div>
 
-          {/* Successful Deliveries */}
           <div className="flex flex-col items-start justify-between w-full px-4 py-4 white_box">
             <div className="flex items-center gap-3">
               <CheckCircle size={18} color="#85E211" />
@@ -104,7 +103,6 @@ const DashboardUser = () => {
             </div>
           </div>
 
-          {/* Revenue */}
           <div className="flex flex-col items-start justify-between w-full px-4 py-4 white_box">
             <div className="flex items-center gap-3">
               <DollarSign size={18} color="#85E211" />
@@ -116,14 +114,13 @@ const DashboardUser = () => {
           </div>
         </div>
 
-        {/* Chart Section */}
         <div className="white_box w-full md:w-[82%]">
           <LineChart />
         </div>
-      </div>
+      </div> */}
 
       {/* Courier Jobs Table (Dummy) */}
-      <RequestsDataDriver />
+      {/* <RequestsDataDriver /> */}
 
       {/* Date Filter Modal */}
       <ModalPopup

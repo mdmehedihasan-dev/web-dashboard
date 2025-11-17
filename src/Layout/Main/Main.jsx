@@ -111,6 +111,19 @@ const MainLayout = () => {
             {/* USER ROUTES */}
             {role === "user" && (
               <>
+
+                 <Link
+                  to="dashboard"
+                  className={`flex gap-4 items-center p-4 px-6 w-full rounded-full hover:bg-primary hover:text-white ${activeClass(
+                    "dashboard"
+                  )}`}
+                >
+                  <FileText size={22} />
+                  <span>Dashboard</span>
+                </Link>
+
+
+
                 <Link
                   to="my-requests"
                   className={`flex gap-4 items-center p-4 px-6 w-full rounded-full hover:bg-primary hover:text-white ${activeClass(
@@ -132,8 +145,6 @@ const MainLayout = () => {
                 </div>
               </>
             )}
-
-            {/* COURIER ROUTES */}
             {role === "courier" && (
               <>
                 <Link
@@ -177,6 +188,15 @@ const MainLayout = () => {
             >
               <MessageSquare size={21} />
               <span>Chat</span>
+            </Link>
+            <Link
+              to="update-profile"
+              className={`flex gap-4 items-center p-4 px-6 w-full rounded-full hover:bg-primary hover:text-white ${activeClass(
+                "update-profile"
+              )}`}
+            >
+              <MessageSquare size={21} />
+              <span>Update Profile</span>
             </Link>
 
             <Link

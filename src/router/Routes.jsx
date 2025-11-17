@@ -17,6 +17,7 @@ import Step4 from "../pages/request/Step4";
 import Step5 from "../pages/request/Step5";
 import Step6 from "../pages/request/Step6";
 import MyRequests from "../Dashboard/myRequests/MyRequests";
+import UpdateProfile from "../Dashboard/updateProfile/UpdateProfile";
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ export const router = createBrowserRouter([
           {
             path: "/dashboard",
             element: <Dashboard />,
+          },
+           {
+            path: "/update-profile",
+            element: <UpdateProfile/>,
           },
           {
             path: "/chat",
