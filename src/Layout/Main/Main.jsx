@@ -100,7 +100,7 @@ const MainLayout = () => {
         <div className="flex flex-col items-center justify-center w-full">
           {/* LOGO */}
           <Link
-            to="/home"
+            to="/"
             className="border-b border-b-[#EBEBEB] pb-6 mb-8 w-full flex justify-center"
           >
             <img src={LOGO} alt="Logo" className="h-14" />
