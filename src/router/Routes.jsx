@@ -16,6 +16,7 @@ import Step3 from "../pages/request/Step3";
 import Step4 from "../pages/request/Step4";
 import Step5 from "../pages/request/Step5";
 import Step6 from "../pages/request/Step6";
+import MyRequests from "../Dashboard/myRequests/MyRequests";
 
 export const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
           {
             path: "/customer-support",
             element: <CustomerSupport />,
+          },
+            {
+            path: "/my-requests",
+            element: <MyRequests/>,
           },
           {
             path: "/more",
