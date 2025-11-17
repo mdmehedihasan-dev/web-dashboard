@@ -5,31 +5,14 @@ import { FaWhatsapp } from "react-icons/fa";
 
 const CustomerSupport = () => {
   return (
-    <div className="flex justify-center w-full min-h-screen px-4 py-10 bg-gray-100">
-      <div className="relative w-full p-8 bg-white shadow-sm max-w-7xl rounded-xl md:p-12">
+    <div className="flex w-full min-h-screen px-4 py-10 bg-gray-100">
+      <div className="relative w-full p-8 shadow-sm max-w-7xl rounded-xl md:p-12">
 
         {/* ===== CONTENT WRAPPER ===== */}
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
 
           {/* ===== LEFT SECTION ===== */}
-          <div>
-            <h2 className="mb-4 text-2xl font-semibold">Ask a personal Question</h2>
-
-            <p className="mb-5 leading-relaxed text-gray-600">
-              Riktig sonade i homoadoption. Gatustickning diras för sist.
-              Kogon plastbanta vuling. Epispeng prese sk ov. Syna ropöpp antitik.
-              Sugrössseende ogt adartad. Euromons viling porat. Somopoktiga sekåttredade nude.
-            </p>
-
-            <p className="leading-relaxed text-gray-600">
-              Riktig sonade i homoadoption. Gatustickning diras för sist.
-              Kogon plastbanta vuling. Epispeng prese sk ov. Syna ropöpp antitik.
-              Sugrössseende ogt adartad. Euromons viling porat. Somopoktiga sekåttredade nude.
-            </p>
-          </div>
-
-          {/* ===== RIGHT SECTION (FORM) ===== */}
-          <div>
+           <div>
             {/* Name */}
             <label className="text-sm font-medium">Name *</label>
             <input
@@ -59,6 +42,16 @@ const CustomerSupport = () => {
               <FiSend size={18} /> SEND
             </button>
           </div>
+
+
+        
+
+          {/* ===== RIGHT SECTION (FORM) ===== */}
+
+            <div>
+             <img src="https://koerierplatform.nl/assets/amico-i2cAE3pF.svg" alt="" />
+          </div>
+         
         </div>
 
         {/* ===== FLOATING BUTTON (BOTTOM RIGHT) ===== */}

@@ -49,13 +49,13 @@ const DashboardUser = () => {
   const closeModal = () => setModalOpen(false);
 
   return (
-    <div>
+    <div className="">
       {/* --------------------- USER DASHBOARD --------------------- */}
       <h1 className="font-bold text-[17px] w-full my-5">User Dashboard</h1>
 
       {/* Total Jobs Posted */}
-      <div className="flex items-center justify-between w-full px-4 py-4 mt-5 white_box">
-        <div className="flex items-center gap-5">
+      <div className="flex items-center justify-between w-full px-4 py-4 mt-5 bg-white rounded-xl white_box">
+        <div className="flex items-center gap-5 ">
           <List size={20} color="#85E211" />
           <div className="uppercase text-[17px] font-bold">
             Total Jobs Posted

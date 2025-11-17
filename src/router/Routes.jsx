@@ -18,12 +18,9 @@ import Step5 from "../pages/request/Step5";
 import Step6 from "../pages/request/Step6";
 import MyRequests from "../Dashboard/myRequests/MyRequests";
 import UpdateProfile from "../Dashboard/updateProfile/UpdateProfile";
+import HomeLayout from "../Layout/Main/HomeLayout";
 
 export const router = createBrowserRouter([
-  {
-    path: "/home",
-    element: <Home />,
-  },
   {
     path: "/sign-in",
     element: <SignIn />,
@@ -53,7 +50,12 @@ export const router = createBrowserRouter([
   { path: "/request/form/step/3", element: <Step3 /> },
   { path: "/request/form/step/4", element: <Step4 /> },
   { path: "/request/form/step/5", element: <Step5 /> },
-   { path: "/request/form/step/6", element: <Step6/> },
+  { path: "/request/form/step/6", element: <Step6 /> },
+
+  {
+    element: <HomeLayout />,
+    children: [{ path: "/", element: <Home /> }],
+  },
   {
     element: <PrivateRoute />,
     children: [
@@ -65,9 +67,9 @@ export const router = createBrowserRouter([
             path: "/dashboard",
             element: <Dashboard />,
           },
-           {
+          {
             path: "/update-profile",
-            element: <UpdateProfile/>,
+            element: <UpdateProfile />,
           },
           {
             path: "/chat",
@@ -77,9 +79,9 @@ export const router = createBrowserRouter([
             path: "/customer-support",
             element: <CustomerSupport />,
           },
-            {
+          {
             path: "/my-requests",
-            element: <MyRequests/>,
+            element: <MyRequests />,
           },
           {
             path: "/more",

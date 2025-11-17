@@ -87,7 +87,7 @@ const MainLayout = () => {
       : "bg-white text-black";
 
   return (
-    <div className="flex items-start justify-between gap-0">
+    <div className="flex items-start justify-between gap-0 ">
       {/* LEFT SIDEBAR */}
       <div
         ref={sidebarRef}
@@ -250,7 +250,7 @@ const MainLayout = () => {
       </div>
 
       {/* MAIN CONTENT */}
-      <div className="border-0 w-[95%] md:w-[79%] mx-auto mt-4 mb-10 md:ml-[300px]">
+      <div className="border-0   w-[95%] md:w-[79%] mx-auto mt-4 mb-10 md:ml-[300px]">
         <div className="flex items-center justify-between header_top">
           <h1 className="font-bold text-[17px] capitalize truncate">
             Welcome {localStorage.getItem("username") || "User"} (
@@ -276,7 +276,7 @@ const MainLayout = () => {
         </div>
 
         {/* Page Content */}
-        <div className="mt-6">
+        <div className="mt-6 ">
           <Outlet />
         </div>
       </div>

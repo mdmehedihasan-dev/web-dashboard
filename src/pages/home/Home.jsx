@@ -30,6 +30,7 @@ const Home = () =>{
     <div className="">
       <AosWrapper>
         <div>
+          
           <Hero/>
           <FormFilter/>
           <BookNow/>

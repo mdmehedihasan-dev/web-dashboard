@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { AiTwotoneMail } from "react-icons/ai";
+import { FaRegUser } from "react-icons/fa";
+import { IoLocationOutline } from "react-icons/io5";
+import { PiHeadphones } from "react-icons/pi";
 
 const UpdateProfile = () => {
   const [emailNotify, setEmailNotify] = useState(true);
@@ -10,7 +14,6 @@ const UpdateProfile = () => {
       <div
         className="w-full p-6 rounded-2xl"
         style={{
-
           backgroundImage:
             "url('https://koerierplatform.nl/assets/profile_bg-jo7bTfgx.svg')",
             backgroundSize: "cover",
@@ -56,51 +59,68 @@ const UpdateProfile = () => {
             {/* First Name */}
             <div>
               <label className="text-sm font-medium">First name *</label>
-              <input
+             <div className="relative ">
+
+               <input
                 type="text"
                 defaultValue="Ghegham"
-                className="w-full px-3 py-3 mt-1 border border-gray-300 rounded-lg focus:ring focus:ring-primary"
+                className="w-full px-8 py-3 mt-1 border border-gray-300 rounded-lg focus:ring focus:ring-primary"
               />
+              <FaRegUser className="absolute left-2 top-[18px]" />
+             </div>
             </div>
 
             {/* Last Name */}
             <div>
               <label className="text-sm font-medium">Last name *</label>
-              <input
+             <div className="relative">
+                 <input
                 type="text"
                 defaultValue="Karapetian"
-                className="w-full px-3 py-3 mt-1 border border-gray-300 rounded-lg focus:ring focus:ring-primary"
+                className="w-full px-8 py-3 mt-1 border border-gray-300 rounded-lg focus:ring focus:ring-primary"
               />
+               <FaRegUser className="absolute left-2 top-[18px]" />
+             </div>
             </div>
 
             {/* Email */}
             <div>
               <label className="text-sm font-medium">Email address *</label>
-              <input
+              <div className="relative">
+                <input
                 type="email"
                 defaultValue="aeng-service@hotmail.com"
-                className="w-full px-3 py-3 mt-1 border border-gray-300 rounded-lg focus:ring focus:ring-primary"
+                className="w-full px-8 py-3 mt-1 border border-gray-300 rounded-lg focus:ring focus:ring-primary"
               />
+               <AiTwotoneMail className="absolute left-2 top-[18px]"  />
+              </div>
             </div>
 
             {/* Phone */}
             <div>
               <label className="text-sm font-medium">Phone *</label>
-              <input
+              
+               <div className="relative">
+                <input
                 type="tel"
                 placeholder="Enter your phone number"
-                className="w-full px-3 py-3 mt-1 border border-gray-300 rounded-lg focus:ring focus:ring-primary"
+                className="w-full px-8 py-3 mt-1 border border-gray-300 rounded-lg focus:ring focus:ring-primary"
               />
+               <PiHeadphones className="absolute left-2 top-[18px]" />
+               </div>
             </div>
 
             {/* Address */}
             <div className="md:col-span-2">
               <label className="text-sm font-medium">Address *</label>
-              <input
+              <div className="relative">
+                <input
                 type="text"
                 placeholder="Enter your address"
-                className="w-full px-3 py-3 mt-1 border border-gray-300 rounded-lg focus:ring focus:ring-primary"
+                className="w-full px-8 py-3 mt-1 border border-gray-300 rounded-lg focus:ring focus:ring-primary"
               />
+               <IoLocationOutline className="absolute left-2 top-[18px]" />
+              </div>
             </div>
           </div>
         </div>
